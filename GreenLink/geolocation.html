@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geolocation Example</title>
+<script>
+window.onload = function() {
+    if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            // Do something with latitude and longitude
+            document.getElementById('latitude').innerText = latitude;
+            document.getElementById('longitude').innerText = longitude;
+
+            // Initialize map with current position
+            initMap(latitude, longitude);
+        });
+    } else {
+        document.getElementById('unsupported').innerText = "Geolocation not supported";
+    }
+};
+
+function initMap(latitude, longitude) {
+    var map;
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: latitude, lng: longitude},
+        zoom: 8
+    });
+}
+</script>
+</head>
+<body>
+<h1>Geolocation Example</h1>
+<p>Latitude: <span id="latitude"></span></p>
+<p>Longitude: <span id="longitude"></span></p>
+<p id="unsupported"></p>
+<div id="map"></div>
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+</body>
+</html>

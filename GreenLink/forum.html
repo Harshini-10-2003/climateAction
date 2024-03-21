@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community Forum - GreenLink</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>GreenLink</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="calculator.html">Carbon Footprint Calculator</a></li>
+        <li><a href="monitoring.html">Real-time Monitoring</a></li>
+        <li><a href="community.html">Community Hub</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <section id="forum">
+    <h2>Community Forum</h2>
+    <p>Join discussions, ask questions, and share ideas with other community members.</p>
+    <!-- Add forum content here -->
+    <div id="forumContent">
+      <!-- Forum threads will be dynamically populated here -->
+    </div>
+    <form id="emailForm" action="/sendEmail.js" method="post">
+        <label for="senderEmail">Your Email:</label>
+        <input type="email" id="senderEmail" name="senderEmail" required>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea>
+        <button type="submit">Send Email</button>
+      </form>
+      
+  </section>
+
+  <footer>
+    <p>&copy; 2024 GreenLink. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

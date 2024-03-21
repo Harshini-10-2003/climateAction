@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-time Monitoring - GreenLink</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>GreenLink</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="calculator.html">Carbon Footprint Calculator</a></li>
+        <li><a href="monitoring.html">Real-time Monitoring</a></li>
+        <li><a href="community.html">Community Hub</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <section id="monitoring">
+    <h2>Real-time Environmental Monitoring</h2>
+    <p>Stay informed with live updates on environmental conditions:</p>
+    <!-- Add monitoring content here -->
+    <div id="environmentalData">
+      <div class="data-card">
+        <h3>Temperature</h3>
+        <p>Current temperature: <span id="temperature">--</span>°C</p>
+      </div>
+      <div class="data-card">
+        <h3>Air Quality</h3>
+        <p>Current air quality index: <span id="airQuality">--</span></p>
+      </div>
+      <div class="data-card">
+        <h3>Humidity</h3>
+        <p>Current humidity level: <span id="humidity">--</span>%</p>
+      </div>
+      <div class="data-card">
+        <h3>UV Index</h3>
+        <p>Current UV index: <span id="uvIndex">--</span></p>
+      </div>
+    </div>
+     <!-- Geolocation Section -->
+     <div id="geolocation-section">
+      <h3>Find Us</h3>
+      <p>Find our location on the map:</p>
+      <div id="map"></div>
+      <p id="unsupported"></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 GreenLink. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <!-- JavaScript code -->
+  <script>
+    window.onload = function() {
+      if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          var latitude = position.coords.latitude;
+          var longitude = position.coords.longitude;
+          initMap(latitude, longitude);
+        });
+      } else {
+        document.getElementById('unsupported').innerText = "Geolocation not supported";
+      }
+    };
+
+    function initMap(latitude, longitude) {
+      var map;
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: latitude, lng: longitude},
+        zoom: 8
+      });
+    }
+  </script>
+
+  <!-- Google Maps API script -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqn42YednMB1XslnvSYhUEM_YBqs_0Izs&callback=initMap" async defer></script>
+  <script src="script.js"></script>
+</body>
+</html>
